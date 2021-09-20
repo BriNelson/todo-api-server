@@ -5,9 +5,11 @@ function CreateItems(arr) {
       let list = document.getElementById('toDoList')
       let item = document.createElement('li')
 
-      item.appendChild(arr[i])
+      item.appendChild(document.createTextNode(arr[i]))
       list.appendChild(item)
     }
+
+    return list
 }
 
 CreateItems(arrList)
