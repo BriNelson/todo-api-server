@@ -1,20 +1,33 @@
-let arrList = [{
-  "title": "Eat",
-  "category": "Hungry",
-  "id": 1
+let todoList = [{
+  title: "Eat",
+  id: 1
 },
 {
-  "title": "Sleep",
-  "category": "Tired",
-  "id": 2
-},
+  title: "Sleep",
+  id: 2
+}, 
 {
-  "title": "Work",
-  "category": "Living",
-  "id": 3
+  title: "Work",
+  id: 3
 }]
 
+const userObject = {}
+const addItemBtn = document.querySelector('#addItem')
+
+addItemBtn.addEventListener('click', event => {
+  console.log("yay clicked")
+  let newTask = {
+    title: document.querySelector('#userTask').value,
+    id: todoList.length + 1
+  }
+
+  todoList.push(newTask)
+  DisplayItems(todoList)
+  document.querySelector('#userTask').value = ""
+})
+
 function DisplayItems(arr) {
+    document.querySelector('#toDoList').innerHTML = ""
     arr.forEach(element => {
       // Creates div for each todo item
       const itemDiv = document.createElement('div')
@@ -28,7 +41,7 @@ function DisplayItems(arr) {
 
       // Creates li
       const item = document.createElement('li')
-      item.appendChild(document.createTextNode(`${element.title} – Category: ${element.category}`))
+      item.appendChild(document.createTextNode(`${element.title}`))
       item.classList.add('todo-item')
       itemDiv.appendChild(item)
 
@@ -48,16 +61,6 @@ function DisplayItems(arr) {
       let list = document.querySelector('#toDoList')
       list.appendChild(itemDiv)
     });
-  
-  
-  
-  // for(let i = 0; i < arr.length; ++i){
-    //   let list = document.getElementById('toDoList')
-    //   let item = document.createElement('li')
-
-    //   item.appendChild(document.createTextNode(arr[i]))
-    //   list.appendChild(item)
-    // }
 }
 
-DisplayItems(arrList)
+DisplayItems(todoList)
