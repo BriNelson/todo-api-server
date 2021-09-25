@@ -29,6 +29,17 @@ addItemBtn.addEventListener('click', event => {
   document.querySelector('#userTask').value = ""
 })
 
+//Delete Task
+
+toDoList.addEventListener('click', deleteTask) 
+function deleteTask (e){
+  const element = e.target;
+  if (element.classList[0] === "delete-item-btn"){
+    const todo = element.parentElement;
+    todo.classList.add("delete-item-btn")
+  }
+};
+
 //Mark as complete
 document.addEventListener('click', event => {
   let element = event.target;

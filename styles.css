@@ -84,3 +84,10 @@ div.list-container ul div.item-div {
     font-size: 1.5rem;
     margin: 0;
 }
+
+
+.dlt {
+    display: none;
+    transform: translateY(10rem) rotateZ(20deg);
+    opacity: 0;
+  }
