@@ -51,7 +51,7 @@ document.addEventListener('click', event => {
 // Displays todo items from local storage
 function DisplayItems(arr) {
     document.querySelector('#toDoList').innerHTML = ""
-    arr.forEach(element => {
+    arr.forEach((element, index) => {
       // Creates li container for each todo item
       const itemDiv = document.createElement('li')
       itemDiv.classList.add('item-div')
@@ -91,6 +91,11 @@ function DisplayItems(arr) {
       itemDeleteBtn.innerHTML = '<i class="fas fa-trash"></i>'
       itemDeleteBtn.classList.add('delete-item-btn', 'btn', 'btn-danger')
       itemDiv.appendChild(itemDeleteBtn)
+      // Dynamically adds event listener 
+      itemDeleteBtn.addEventListener('click', event => {
+        arr.splice(index, 1)
+        DisplayItems(todoList)
+        })
 
       // Append itemDiv to todo list
       let list = document.querySelector('#toDoList')
