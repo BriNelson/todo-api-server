@@ -85,9 +85,11 @@ div.list-container ul div.item-div {
     margin: 0;
 }
 
+.todo-list-item {
+    transition: all 0.3s ease-out;
+}
 
-.dlt {
-    display: none;
-    transform: translateY(10rem) rotateZ(20deg);
+.todo-list-item-fall {
+    transform: translateY(12rem) rotateZ(10deg);
     opacity: 0;
-  }
+}

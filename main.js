@@ -14,6 +14,7 @@ let todoList = [{
   complete: "false"
 }]
 
+
 // Add Item to do
 const userObject = {}
 const addItemBtn = document.querySelector('#addItem')
@@ -29,16 +30,15 @@ addItemBtn.addEventListener('click', event => {
   document.querySelector('#userTask').value = ""
 })
 
-//Delete Task
 
-toDoList.addEventListener('click', deleteTask) 
-function deleteTask (e){
-  const element = e.target;
-  if (element.classList[0] === "delete-item-btn"){
-    const todo = element.parentElement;
-    todo.classList.add("delete-item-btn")
-  }
-};
+//Delete All Button
+document.getElementById('clearAll').addEventListener('click', handleClearAll);
+
+function handleClearAll(e) {
+  
+  document.querySelector('ul').innerHTML = '';
+}
+
 
 //Mark as complete
 document.addEventListener('click', event => {
@@ -65,6 +65,7 @@ function DisplayItems(arr) {
       // Creates div for each todo item
       const itemDiv = document.createElement('div')
       itemDiv.classList.add('item-div')
+      
 
       // Creates input for checkmark
       const itemCheckmark = document.createElement('input')
@@ -78,6 +79,7 @@ function DisplayItems(arr) {
       item.appendChild(document.createTextNode(`${element.title}`))
       item.classList.add('todo-item')
       itemDiv.appendChild(item)
+      
 
       // Creates edit button
       const itemEditBtn = document.createElement('button')
@@ -85,12 +87,14 @@ function DisplayItems(arr) {
       itemEditBtn.classList.add('edit-item-btn', 'btn', 'btn-light')
       itemDiv.appendChild(itemEditBtn)
 
+
       // Creates delete button
       const itemDeleteBtn = document.createElement('button')
       itemDeleteBtn.innerHTML = '<i class="fas fa-trash"></i>'
       itemDeleteBtn.classList.add('delete-item-btn', 'btn', 'btn-danger')
       itemDiv.appendChild(itemDeleteBtn)
 
+      
       // Append itemDiv to todo list
       let list = document.querySelector('#toDoList')
       list.appendChild(itemDiv)
