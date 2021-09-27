@@ -2,17 +2,17 @@ let todoList = [
   {
     title: "Eat",
     id: 1,
-    complete: "false",
+    complete: false,
   },
   {
     title: "Sleep",
     id: 2,
-    complete: "false",
+    complete: false,
   },
   {
     title: "Work",
     id: 3,
-    complete: "false",
+    complete: false,
   },
 ];
 
@@ -27,10 +27,12 @@ addItemBtn.addEventListener("click", () => {
   let newTask = {
     title: document.querySelector("#userTask").value,
     id: todoList.length + 1,
-  };
+    complete: false
+  }
 
   todoList.push(newTask);
-  DisplayItems(todoList);
+  let newArr = [...todoList]
+  DisplayItems(newArr);
   document.querySelector("#userTask").value = "";
 });
 
@@ -49,7 +51,8 @@ deleteAllButton.addEventListener("click", (event) => {
     }
   }
   if (lengthStart > todoList.length) {
-    DisplayItems(todoList);
+    let newArr = [...todoList]
+    DisplayItems(newArr);
   }
 });
 
