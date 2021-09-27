@@ -14,6 +14,9 @@ let todoList = [{
   complete: "false"
 }]
 
+// Completed Task
+var completedTasksHolder = document.getElementById("completed-tasks");
+
 // Add Item to do
 const userObject = {}
 const addItemBtn = document.querySelector('#addItem')
@@ -28,6 +31,19 @@ addItemBtn.addEventListener('click', () => {
   DisplayItems(todoList)
   document.querySelector('#userTask').value = ""
 })
+
+
+//Delete All Button
+let deleteallbtn = document.getElementById("deleteallbtn");
+deleteallbtn.addEventListener("click", function(){
+
+    let addItem = document.getElementById("addItem");
+
+DisplayItems();
+
+})
+
+
 
 //Mark as complete
 document.addEventListener('click', event => {
@@ -46,6 +62,9 @@ document.addEventListener('click', event => {
         }
       }
     }
+
+    var listItem = this.parentNode;
+  completedTasksHolder.appendChild('item-div'); //'item-div now working //
 })
 
 // Displays todo items from local storage
@@ -55,6 +74,7 @@ function DisplayItems(arr) {
       // Creates li container for each todo item
       const itemDiv = document.createElement('li')
       itemDiv.classList.add('item-div')
+      
 
       // Creates input for checkmark and appends to item-div
       const itemCheckmark = document.createElement('input')
@@ -68,6 +88,12 @@ function DisplayItems(arr) {
       item.appendChild(document.createTextNode(`${element.title}`))
       item.classList.add('todo-item')
       itemDiv.appendChild(item)
+      
+//       // Creates delete All
+//       const deleteAll = document.createElement('button')
+//       deleteAll.innerHTML = '<div>Delete All<div>'
+//       deleteAll.classList.add('btn', 'btn-danger')
+//       itemDiv.appendChild(deleteAll)
 
       // Creates edit task input
       const editTaskInput = document.createElement('input')
@@ -80,6 +106,8 @@ function DisplayItems(arr) {
       itemEditBtn.innerHTML = '<i class="fas fa-edit"></i>'
       itemEditBtn.classList.add('edit-item-btn', 'btn', 'btn-light')
       itemDiv.appendChild(itemEditBtn)
+
+      // Creates delete button
 
       // Creates save button
       const itemSaveBtn = document.createElement('button')
@@ -96,6 +124,8 @@ function DisplayItems(arr) {
         arr.splice(index, 1)
         DisplayItems(todoList)
         })
+
+      
 
       // Append itemDiv to todo list
       let list = document.querySelector('#toDoList')
