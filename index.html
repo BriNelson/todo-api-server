@@ -33,7 +33,9 @@
         </button>
     </div>
 
-    <a class="btn btn-light" id="clearAll">Delete All</a>
+    <button id="deleteallbtn" class="btn btn-danger">
+        Clear All
+    </button>
 
     <div class="list-container">
         <h2>ToDo</h2>
@@ -41,6 +43,15 @@
     </div>
 
 
+    <div class="list-container">
+        <h3>Completed</h3>
+        <ul class="list-group" id="completed-tasks">
+            <li>
+                <input type="checkbox" checked="">
+                <label>Code</label>
+            </li>
+        </ul>
+    </div>
 
     <!-- Boostrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

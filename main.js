@@ -14,6 +14,8 @@ let todoList = [{
   complete: "false"
 }]
 
+// Completed Task
+var completedTasksHolder = document.getElementById("completed-tasks");
 
 // Add Item to do
 const userObject = {}
@@ -32,12 +34,15 @@ addItemBtn.addEventListener('click', event => {
 
 
 //Delete All Button
-document.getElementById('clearAll').addEventListener('click', handleClearAll);
+let deleteallbtn = document.getElementById("deleteallbtn");
+deleteallbtn.addEventListener("click", function(){
 
-function handleClearAll(e) {
-  
-  document.querySelector('ul').innerHTML = '';
-}
+    let addItem = document.getElementById("addItem");
+
+DisplayItems();
+
+})
+
 
 
 //Mark as complete
@@ -57,6 +62,9 @@ document.addEventListener('click', event => {
         }
       }
     }
+
+    var listItem = this.parentNode;
+  completedTasksHolder.appendChild('item-div'); //'item-div now working //
 })
 
 function DisplayItems(arr) {
@@ -80,6 +88,11 @@ function DisplayItems(arr) {
       item.classList.add('todo-item')
       itemDiv.appendChild(item)
       
+//       // Creates delete All
+//       const deleteAll = document.createElement('button')
+//       deleteAll.innerHTML = '<div>Delete All<div>'
+//       deleteAll.classList.add('btn', 'btn-danger')
+//       itemDiv.appendChild(deleteAll)
 
       // Creates edit button
       const itemEditBtn = document.createElement('button')
@@ -95,6 +108,7 @@ function DisplayItems(arr) {
       itemDiv.appendChild(itemDeleteBtn)
 
       
+
       // Append itemDiv to todo list
       let list = document.querySelector('#toDoList')
       list.appendChild(itemDiv)
