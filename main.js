@@ -1,3 +1,26 @@
+/* Global Variables */
+const userObject = {};
+// Selects add item button
+const addItemBtn = document.querySelector("#addItem");
+// Creates li container for each todo item
+const itemDiv = document.createElement("li");
+// Creates input for checkmark
+const itemCheckmark = document.createElement("input");
+// Creates p element for todo item
+const item = document.createElement("p");
+// Creates edit task input
+const editTaskInput = document.createElement("input");
+// Creates item edit button
+const itemEditBtn = document.createElement("button");
+// Creates item save button
+const itemSaveBtn = document.createElement("button");
+// Creates item delete button
+const itemDeleteBtn = document.createElement("button");
+// Selects to do list
+let list = document.querySelector("#toDoList");
+// Completed Task
+var completedTasksHolder = document.getElementById("completed-tasks");
+
 let todoList = [
   {
     title: "Eat",
@@ -16,13 +39,8 @@ let todoList = [
   },
 ];
 
-// Completed Task
-var completedTasksHolder = document.getElementById("completed-tasks");
 
 // Add Item to do
-const userObject = {};
-const addItemBtn = document.querySelector("#addItem");
-
 addItemBtn.addEventListener("click", () => {
   let newTask = {
     title: document.querySelector("#userTask").value,
@@ -82,42 +100,36 @@ document.addEventListener("click", (event) => {
 function DisplayItems(arr) {
   document.querySelector("#toDoList").innerHTML = "";
   arr.forEach((element, index) => {
-    // Creates li container for each todo item
-    const itemDiv = document.createElement("li");
-    itemDiv.classList.add("item-div");
 
-    // Creates input for checkmark and appends to item-div
-    const itemCheckmark = document.createElement("input");
+    // Adds item-div class to itemDiv li element
+    itemDiv.classList.add("item-div");
+    
+    // Appends item checkmark input to item-div
     itemCheckmark.classList.add("form-check-input");
     itemCheckmark.type = "checkbox";
     itemCheckmark.setAttribute("id", `${element.id}`);
     itemDiv.appendChild(itemCheckmark);
 
-    // Creates p for todo item and appends to item-div
-    const item = document.createElement("p");
+    // Appends p for todo item to item-div
     item.appendChild(document.createTextNode(`${element.title}`));
     item.classList.add("todo-item");
     itemDiv.appendChild(item);
 
     // Creates edit task input
-    const editTaskInput = document.createElement("input");
     editTaskInput.classList.add("form-control", "edit-user-task-input");
     editTaskInput.type = "text";
     editTaskInput.value = element.title;
 
-    // Creates edit button and appends to item-div
-    const itemEditBtn = document.createElement("button");
+    // Appends edit button to item-div
     itemEditBtn.innerHTML = '<i class="fas fa-edit"></i>';
     itemEditBtn.classList.add("edit-item-btn", "btn", "btn-light");
     itemDiv.appendChild(itemEditBtn);
 
     // Creates save button
-    const itemSaveBtn = document.createElement("button");
     itemSaveBtn.innerHTML = "<span>Save</span>";
     itemSaveBtn.classList.add("btn", "btn-light");
 
-    // Creates delete button and appends to item-div
-    const itemDeleteBtn = document.createElement("button");
+    // Appends delete button to item-div
     itemDeleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
     itemDeleteBtn.classList.add("delete-item-btn", "btn", "btn-danger");
     itemDiv.appendChild(itemDeleteBtn);
@@ -129,7 +141,6 @@ function DisplayItems(arr) {
     });
 
     // Append itemDiv to todo list
-    let list = document.querySelector("#toDoList");
     list.appendChild(itemDiv);
 
     // Edit button click event handler
