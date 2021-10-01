@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Dropdowns · Bootstrap v5.1</title>
+
+
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -17,13 +24,20 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dropdowns/">
+
     <!-- CSS -->
     <link rel="stylesheet" href="./styles.css">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dropdowns/">
 
     <title>ToDo List App: 501st</title>
 </head>
 
 <body>
+
     <h1>ToDo List App</h1>
 
     <div class="input-group mb-3" id="inputContainer">
@@ -32,6 +46,70 @@
             <i class="fas fa-plus"></i>
         </button>
     </div>
+
+    <!-- Dropdown Category -->
+    <h1 class="form-control" style="width: 280px;">
+        <form class="p-2 mb-2 bg-light border-bottom">
+            <input type="text" onclick="inputCategory()" class="form-control addCategoryInput" autocomplete="false"
+                placeholder="Add New Category">
+            <button class="locationSetter">Add Category</button>
+        </form>
+        <ul class="list-unstyled mb-0 dropdown-content">
+            <li><a>
+                    <span>
+                        Food
+                    </span>
+                </a>
+            </li>
+            <li><a>
+                    <span>
+                        Work
+                    </span>
+                </a></li>
+            <li><a>
+                    <span>
+                        Gym
+                    </span>
+                </a></li>
+            <li><a>
+                    <span>
+                        Home
+                    </span>
+                </a></li>
+        </ul>
+    </h1>
+
+    <script>
+        const locationSetter = document.querySelector('.locationSetter');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        const locations = document.querySelector('span');
+        dropdownContent.addEventListener('click', e => {
+            if (e.target.tagName === 'SPAN') {
+                locationSetter.textContent = e.target.innerHTML;
+                locationSetter.style.color = 'blue';
+                locationSetter.style.fontSize = '18px';
+            }
+        });
+
+        // Adding to the drop down menu
+        const addCategoryInput = document.querySelector('.addCategoryInput');
+
+        addCategoryInput.addEventListener('change', e => {
+
+            e.preventDefault();
+            const newCategory = e.target.value;
+            let elem = document.createElement("LI");
+            let span = document.createElement("SPAN");
+            let text = document.createTextNode(newCategory.toString());
+            span.appendChild(text);
+            elem.appendChild(span);
+
+            dropdownContent.appendChild(elem);
+        })
+    </script>
+
+    <!-- End-->
+
 
     <button id="deleteallbtn" class="btn btn-danger">
         Delete All Completed ToDo's
@@ -42,12 +120,15 @@
         <ul class="list-group" id="toDoList"></ul>
     </div>
 
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Boostrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
     <!-- Main JS -->
     <script src="./main.js"></script>
+
 </body>
 
 </html>
