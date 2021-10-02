@@ -56,6 +56,15 @@ deleteAllButton.addEventListener("click", (event) => {
   }
 });
 
+//Deletes list item
+let fullListItem = document.querySelector('#toDoList');// ul saved as a variable 
+fullListItem.addEventListener("click", (event) => { // Event listener listening on the ul
+  if (event.target.matches(".delete-item-btn") || event.target.matches(".fa-trash")) { //seeing if target matches what is clicked
+    todoList.splice(event.target.id, 1); //matches id off of object id
+    DisplayItems(todoList); //re-calls displayItems
+      }
+  })
+
 //Mark as complete
 document.addEventListener("click", (event) => {
   let element = event.target;
@@ -118,16 +127,13 @@ function DisplayItems(arr) {
 
     // Creates delete button and appends to item-div
     const itemDeleteBtn = document.createElement("button");
-    itemDeleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+    itemDeleteBtn.innerHTML = '<i class="fas fa-trash" id='+index+'></i>'; //gives garbage can button unique id, *this might be kind of ghetto
     itemDeleteBtn.classList.add("delete-item-btn", "btn", "btn-danger");
+    itemDeleteBtn.setAttribute('id', index) //gives delete button a somewhat unique delete button
+
     itemDiv.appendChild(itemDeleteBtn);
 
-    // Dynamically adds event listener
-    itemDeleteBtn.addEventListener("click", (event) => {
-      arr.splice(index, 1);
-      DisplayItems(todoList);
-    });
-
+   
     // Append itemDiv to todo list
     let list = document.querySelector("#toDoList");
     list.appendChild(itemDiv);
