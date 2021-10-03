@@ -53,14 +53,18 @@ addItemBtn.addEventListener("click", () => {
     catagory: document.querySelector('#categorieInput').value,
     id: catagoriesList.length + 1
   }
-  console.log(todoList)
-  //pushes new new category to category array
-  catagoriesList.push(newCategory)
-  DisplayCategories(catagoriesList)
   
+  //pushes new new category to category array checks for duplicates
+  const categoryExist = catagoriesList.some(element => element.catagory === newCategory.catagory)
+  if (categoryExist === false) {
+    catagoriesList.push(newCategory)
+    DisplayCategories(catagoriesList)
+  }
+
   todoList.push(newTask);
   let newArr = [...todoList]
   DisplayItems(newArr);
+  
   document.querySelector("#userTask").value = "";
 });
 
@@ -125,7 +129,7 @@ function DisplayCategories(arr) {
     let list = document.querySelector("#categories");
     itemDiv.value = `${element.catagory}`;
     list.appendChild(itemDiv);
-    console.log(`${element.catagory}`)
+    
 
    })
 }
