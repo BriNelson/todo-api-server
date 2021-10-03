@@ -45,12 +45,19 @@ const addItemBtn = document.querySelector("#addItem");
 addItemBtn.addEventListener("click", () => {
   let newTask = {
     title: document.querySelector("#userTask").value,
+    catagory: document.querySelector('#categorieInput').value,
     id: todoList.length + 1,
     complete: false
   }
-
-  console.log(document.querySelector('#categorieInput').value)
-
+  let newCategory = {
+    catagory: document.querySelector('#categorieInput').value,
+    id: catagoriesList.length + 1
+  }
+  console.log(todoList)
+  //pushes new new category to category array
+  catagoriesList.push(newCategory)
+  DisplayCategories(catagoriesList)
+  
   todoList.push(newTask);
   let newArr = [...todoList]
   DisplayItems(newArr);
@@ -110,7 +117,9 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// passes in category array and displays it
 function DisplayCategories(arr) {
+  document.querySelector("#categories").innerHTML = ""
   arr.forEach((element, index) => {
     const itemDiv = document.createElement("option");
     let list = document.querySelector("#categories");
