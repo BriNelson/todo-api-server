@@ -16,12 +16,31 @@ let todoList = [
   },
 ];
 
+let catagoriesList = [
+  {
+    catagory: "active",
+    id: 1,
+    
+  },
+  {
+    catagory: "social",
+    id: 2,
+    
+  },
+  {
+    catagory: "Work",
+    id: 3,
+    
+  },
+];
+
 // Completed Task
 var completedTasksHolder = document.getElementById("completed-tasks");
 
 // Add Item to do
 const userObject = {};
 const addItemBtn = document.querySelector("#addItem");
+
 
 addItemBtn.addEventListener("click", () => {
   let newTask = {
@@ -30,11 +49,15 @@ addItemBtn.addEventListener("click", () => {
     complete: false
   }
 
+  console.log(document.querySelector('#categorieInput').value)
+
   todoList.push(newTask);
   let newArr = [...todoList]
   DisplayItems(newArr);
   document.querySelector("#userTask").value = "";
 });
+
+
 
 //Delete All Button
 let deleteAllButton = document.querySelector("#deleteallbtn");
@@ -86,6 +109,17 @@ document.addEventListener("click", (event) => {
     }
   }
 });
+
+function DisplayCategories(arr) {
+  arr.forEach((element, index) => {
+    const itemDiv = document.createElement("option");
+    let list = document.querySelector("#categories");
+    itemDiv.value = `${element.catagory}`;
+    list.appendChild(itemDiv);
+    console.log(`${element.catagory}`)
+
+   })
+}
 
 // Displays todo items from local storage
 function DisplayItems(arr) {
@@ -158,5 +192,5 @@ function DisplayItems(arr) {
     });
   });
 }
-
+DisplayCategories(catagoriesList);
 DisplayItems(todoList);

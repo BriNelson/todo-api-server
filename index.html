@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Dropdowns · Bootstrap v5.1</title>
+    
 
 
 
@@ -41,74 +41,18 @@
     <h1>ToDo List App</h1>
 
     <div class="input-group mb-3" id="inputContainer">
-        <input type="text" class="form-control" placeholder="Clean house" id="userTask">
+        <input type="text" class="form-control" placeholder="Todo Item" id="userTask">
+        
+        <input list="categories" name="categories" placeholder="Add Category" id="categorieInput">
+  <datalist id="categories">
+    
+  </datalist>
         <button class="btn btn-light" type="button" id="addItem">
             <i class="fas fa-plus"></i>
         </button>
     </div>
 
-    <!-- Dropdown Category -->
-    <h1 class="form-control" style="width: 280px;">
-        <form class="p-2 mb-2 bg-light border-bottom">
-            <input type="text" onclick="inputCategory()" class="form-control addCategoryInput" autocomplete="false"
-                placeholder="Add New Category">
-            <button class="locationSetter">Add Category</button>
-        </form>
-        <ul class="list-unstyled mb-0 dropdown-content">
-            <li><a>
-                    <span>
-                        Food
-                    </span>
-                </a>
-            </li>
-            <li><a>
-                    <span>
-                        Work
-                    </span>
-                </a></li>
-            <li><a>
-                    <span>
-                        Gym
-                    </span>
-                </a></li>
-            <li><a>
-                    <span>
-                        Home
-                    </span>
-                </a></li>
-        </ul>
-    </h1>
-
-    <script>
-        const locationSetter = document.querySelector('.locationSetter');
-        const dropdownContent = document.querySelector('.dropdown-content');
-        const locations = document.querySelector('span');
-        dropdownContent.addEventListener('click', e => {
-            if (e.target.tagName === 'SPAN') {
-                locationSetter.textContent = e.target.innerHTML;
-                locationSetter.style.color = 'blue';
-                locationSetter.style.fontSize = '18px';
-            }
-        });
-
-        // Adding to the drop down menu
-        const addCategoryInput = document.querySelector('.addCategoryInput');
-
-        addCategoryInput.addEventListener('change', e => {
-
-            e.preventDefault();
-            const newCategory = e.target.value;
-            let elem = document.createElement("LI");
-            let span = document.createElement("SPAN");
-            let text = document.createTextNode(newCategory.toString());
-            span.appendChild(text);
-            elem.appendChild(span);
-
-            dropdownContent.appendChild(elem);
-        })
-    </script>
-
-    <!-- End-->
+   
 
 
     <button id="deleteallbtn" class="btn btn-danger">
