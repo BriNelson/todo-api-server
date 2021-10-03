@@ -16,6 +16,24 @@ let todoList = [
   },
 ];
 
+let catagoriesList = [
+  {
+    catagory: "active",
+    id: 1,
+    
+  },
+  {
+    catagory: "social",
+    id: 2,
+    
+  },
+  {
+    catagory: "Work",
+    id: 3,
+    
+  },
+];
+
 // Completed Task
 var completedTasksHolder = document.getElementById("completed-tasks");
 
@@ -23,18 +41,30 @@ var completedTasksHolder = document.getElementById("completed-tasks");
 const userObject = {};
 const addItemBtn = document.querySelector("#addItem");
 
+
 addItemBtn.addEventListener("click", () => {
   let newTask = {
     title: document.querySelector("#userTask").value,
+    catagory: document.querySelector('#categorieInput').value,
     id: todoList.length + 1,
     complete: false
   }
-
+  let newCategory = {
+    catagory: document.querySelector('#categorieInput').value,
+    id: catagoriesList.length + 1
+  }
+  console.log(todoList)
+  //pushes new new category to category array
+  catagoriesList.push(newCategory)
+  DisplayCategories(catagoriesList)
+  
   todoList.push(newTask);
   let newArr = [...todoList]
   DisplayItems(newArr);
   document.querySelector("#userTask").value = "";
 });
+
+
 
 //Delete All Button
 let deleteAllButton = document.querySelector("#deleteallbtn");
@@ -86,6 +116,19 @@ document.addEventListener("click", (event) => {
     }
   }
 });
+
+// passes in category array and displays it
+function DisplayCategories(arr) {
+  document.querySelector("#categories").innerHTML = ""
+  arr.forEach((element, index) => {
+    const itemDiv = document.createElement("option");
+    let list = document.querySelector("#categories");
+    itemDiv.value = `${element.catagory}`;
+    list.appendChild(itemDiv);
+    console.log(`${element.catagory}`)
+
+   })
+}
 
 // Displays todo items from local storage
 function DisplayItems(arr) {
@@ -158,5 +201,5 @@ function DisplayItems(arr) {
     });
   });
 }
-
+DisplayCategories(catagoriesList);
 DisplayItems(todoList);
