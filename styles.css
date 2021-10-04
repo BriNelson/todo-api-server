@@ -36,7 +36,6 @@ li {
 }
 
 /* Input Container Styles */
-
 #inputContainer {
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
     width: 500px;
@@ -107,4 +106,5 @@ div.list-container ul li.item-div p {
 /* Filter */
 #categorieFilter {
     margin-bottom: 1rem;
+    width: 225px;
 }
