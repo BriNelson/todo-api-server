@@ -3,40 +3,40 @@ let todoList = [
     title: "Eat",
     id: 1,
     complete: false,
-    catagory: "Personal"
+    category: "Personal"
   },
   {
     title: "Sleep",
     id: 2,
     complete: false,
-    catagory: "Personal"
+    category: "Personal"
   },
   {
     title: "Code",
     id: 3,
     complete: false,
-    catagory: "Work"
+    category: "Work"
   },
 ];
 
-let catagoriesList = [
+let categoriesList = [
   {
-    catagory: "Active",
+    category: "Active",
     id: 1,
     
   },
   {
-    catagory: "Social",
+    category: "Social",
     id: 2,
     
   },
   {
-    catagory: "Work",
+    category: "Work",
     id: 3,
     
   },
   {
-    catagory: "Personal",
+    category: "Personal",
     id: 4
   }
 ];
@@ -52,20 +52,20 @@ const addItemBtn = document.querySelector("#addItem");
 addItemBtn.addEventListener("click", () => {
   let newTask = {
     title: document.querySelector("#userTask").value,
-    catagory: document.querySelector('#categorieInput').value,
+    category: document.querySelector('#categorieInput').value,
     id: todoList.length + 1,
     complete: false
   }
   let newCategory = {
-    catagory: document.querySelector('#categorieInput').value,
-    id: catagoriesList.length + 1
+    category: document.querySelector('#categorieInput').value,
+    id: categoriesList.length + 1
   }
   
   //pushes new new category to category array checks for duplicates
-  const categoryExist = catagoriesList.some(element => element.catagory === newCategory.catagory)
+  const categoryExist = categoriesList.some(element => element.category === newCategory.category)
   if (categoryExist === false) {
-    catagoriesList.push(newCategory)
-    DisplayCategories(catagoriesList)
+    categoriesList.push(newCategory)
+    DisplayCategories(categoriesList)
   }
 
   todoList.push(newTask);
@@ -78,7 +78,7 @@ addItemBtn.addEventListener("click", () => {
 // Filter ToDo's
 let filterDropdown = document.querySelector("#categorieFilter");
 filterDropdown.addEventListener("change", (event) => {
-    const filterArr = todoList.filter(cata => event.target.value === cata.catagory)
+    const filterArr = todoList.filter(cata => event.target.value === cata.category)
     DisplayItems(filterArr)
 })
 
@@ -131,7 +131,7 @@ function DisplayCategories(arr) {
   arr.forEach((element, index) => {
     const itemDiv = document.createElement("option");
     let list = document.querySelector("#categories");
-    itemDiv.value = `${element.catagory}`;
+    itemDiv.value = `${element.category}`;
     list.appendChild(itemDiv);
     
 
@@ -209,5 +209,5 @@ function DisplayItems(arr) {
     });
   });
 }
-DisplayCategories(catagoriesList);
+DisplayCategories(categoriesList);
 DisplayItems(todoList);
