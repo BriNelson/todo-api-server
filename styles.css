@@ -104,3 +104,7 @@ div.list-container ul li.item-div p {
     width: 200px;
 }
 
+/* Filter */
+#categorieFilter {
+    margin-bottom: 1rem;
+}

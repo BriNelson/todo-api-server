@@ -3,27 +3,30 @@ let todoList = [
     title: "Eat",
     id: 1,
     complete: false,
+    catagory: "Personal"
   },
   {
     title: "Sleep",
     id: 2,
     complete: false,
+    catagory: "Personal"
   },
   {
-    title: "Work",
+    title: "Code",
     id: 3,
     complete: false,
+    catagory: "Work"
   },
 ];
 
 let catagoriesList = [
   {
-    catagory: "active",
+    catagory: "Active",
     id: 1,
     
   },
   {
-    catagory: "social",
+    catagory: "Social",
     id: 2,
     
   },
@@ -32,6 +35,10 @@ let catagoriesList = [
     id: 3,
     
   },
+  {
+    catagory: "Personal",
+    id: 4
+  }
 ];
 
 // Completed Task
@@ -68,26 +75,23 @@ addItemBtn.addEventListener("click", () => {
   document.querySelector("#userTask").value = "";
 });
 
-
+// Filter ToDo's
+let filterDropdown = document.querySelector("#categorieFilter");
+filterDropdown.addEventListener("change", (event) => {
+    const filterArr = todoList.filter(cata => event.target.value === cata.catagory)
+    DisplayItems(filterArr)
+})
 
 //Delete All Button
 let deleteAllButton = document.querySelector("#deleteallbtn");
 deleteAllButton.addEventListener("click", (event) => {
-  const checkBoxElements = document.getElementsByClassName("form-check-input");
-  let lengthStart = todoList.length;
-  for (let i = 0; i <= checkBoxElements.length - 1; i++) {
-    switch (checkBoxElements[i].checked) {
-      case true:
-        todoList.splice(i, 1);
-        break;
-      case false:
-        break;
-    }
+  for (let i = todoList.length - 1; i >= 0; i--) {
+    let todo = todoList[i]
+      if(todo.complete === true){
+        todoList.splice(i, 1)
+      }
   }
-  if (lengthStart > todoList.length) {
-    let newArr = [...todoList]
-    DisplayItems(newArr);
-  }
+  DisplayItems(todoList)
 });
 
 //Deletes list item
