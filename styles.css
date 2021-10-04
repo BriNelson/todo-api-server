@@ -14,8 +14,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right bottom, #0d6efd, #008bff, #00a3ff, #00b8fb, #0dcaf0);
-    background-repeat: no-repeat;
+    background-color:  #6dbccc;
 }
 h1 {
     margin: 2rem;

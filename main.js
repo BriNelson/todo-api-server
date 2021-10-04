@@ -41,9 +41,6 @@ let categoriesList = [
   }
 ];
 
-// Completed Task
-var completedTasksHolder = document.getElementById("completed-tasks");
-
 // Add Item to do
 const userObject = {};
 const addItemBtn = document.querySelector("#addItem");
@@ -102,6 +99,15 @@ fullListItem.addEventListener("click", (event) => { // Event listener listening 
     DisplayItems(todoList); //re-calls displayItems
       }
   })
+
+// Deletes category
+let fullCategoryList = document.querySelector('#list2')
+fullCategoryList.addEventListener("click", (event) => {
+  if (event.target.matches(".delete-category-btn") || event.target.matches(".fa-trash")) {
+    categoriesList.splice(event.target.id, 1)
+    DisplayCategoriesList(categoriesList)
+  }
+})
 
 //Mark as complete
 document.addEventListener("click", (event) => {
@@ -209,5 +215,75 @@ function DisplayItems(arr) {
     });
   });
 }
+
+// Displays categories from categoriesList
+function DisplayCategoriesList(arr) {
+  document.querySelector('#list2').innerHTML= ""
+  arr.forEach((element, index) => {
+    let list2 = document.querySelector('#list2')
+
+    // Creates li container for individual category
+    const categoryDiv = document.createElement("li")
+    categoryDiv.classList.add("item-div")
+
+    // Creates p for category
+    const categoryItem = document.createElement("p")
+    categoryItem.appendChild(document.createTextNode(`${element.category}`))
+    categoryDiv.appendChild(categoryItem)
+
+    // Creates edit category input
+    const editCategoryInput = document.createElement("input")
+    editCategoryInput.classList.add("form-control", "edit-user-task-input")
+    editCategoryInput.type = "text"
+    editCategoryInput.value = element.category
+
+    // Creates edit category button
+    const editCategoryBtn = document.createElement("button")
+    editCategoryBtn.innerHTML = '<i class="fas fa-edit"></i>'
+    editCategoryBtn.classList.add("btn", "btn-light")
+    categoryDiv.appendChild(editCategoryBtn)
+
+    // Creates save category button
+    const saveCategoryBtn = document.createElement("button")
+    saveCategoryBtn.innerHTML = '<span>Save</span>'
+    saveCategoryBtn.classList.add("btn", "btn-light")
+
+    // Creates delete category button
+    const deleteCategoryBtn = document.createElement("button")
+    deleteCategoryBtn.innerHTML = '<i class="fas fa-trash" id='+index+'></i>'
+    deleteCategoryBtn.classList.add("btn", "btn-danger", "delete-category-btn")
+    deleteCategoryBtn.setAttribute('id', index)
+    categoryDiv.appendChild(deleteCategoryBtn)
+
+    // Edit category button event listener
+    editCategoryBtn.addEventListener("click", () => {
+      // Replaces edit button with save button
+      editCategoryBtn.replaceWith(saveCategoryBtn)
+
+      // Replaces category with editCategoryInput
+      categoryItem.replaceWith(editCategoryInput)
+    })
+
+    // Save category button event listener
+    saveCategoryBtn.addEventListener("click", () => {
+      // Finds category item id from categories list and updates the value from edit task
+      objIndex = categoriesList.findIndex((obj) => obj.id === element.id);
+      categoriesList[objIndex].category = editCategoryInput.value;
+
+      // Finds todo item id from todo list and updates the category from edit category
+      // todoIndex = todoList.findIndex((obj) => obj.id === element.id)
+      // todoList[todoIndex].category = editCategoryInput.value
+
+
+      DisplayCategories(categoriesList)
+      // Refreshes categoriesList with edited category
+      DisplayCategoriesList(categoriesList);
+    })
+    
+    list2.appendChild(categoryDiv);
+  })
+}
+
+DisplayCategoriesList(categoriesList)
 DisplayCategories(categoriesList);
 DisplayItems(todoList);
