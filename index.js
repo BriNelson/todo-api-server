@@ -4,7 +4,7 @@ import todoData from "./todoList.js";
 const app = Express();
 const port = 3000;
 
-app.get("/todoData/:id", (req, res) => {
+app.get("/todoData", (req, res) => {
     res.json(todoData)
     
   })
