@@ -1,5 +1,6 @@
 
 
+
 let todoList = [
   {
     title: "Eat",
@@ -42,34 +43,21 @@ let categoriesList = [
     id: 4
   }
 ];
-
+let testVarible = [];
 // Add Item to do
+
 const userObject = {};
 const addItemBtn = document.querySelector("#addItem");
 
 
-addItemBtn.addEventListener("click", () => {
-  let newTask = {
-    title: document.querySelector("#userTask").value,
-    category: document.querySelector('#categorieInput').value,
-    id: todoList.length + 1,
-    complete: false
-  }
-  let newCategory = {
-    category: document.querySelector('#categorieInput').value,
-    id: categoriesList.length + 1
-  }
-  
-  //pushes new new category to category array checks for duplicates
-  const categoryExist = categoriesList.some(element => element.category === newCategory.category)
-  if (categoryExist === false) {
-    categoriesList.push(newCategory)
-    DisplayCategories(categoriesList)
-  }
+fetch('http://localhost:3000/todoData')
+    .then(res => res.json())
+    .then(json => testVarible.push(json))
 
-  todoList.push(newTask);
-  let newArr = [...todoList]
-  DisplayItems(newArr);
+   console.log(testVarible); 
+addItemBtn.addEventListener("click", () => {
+ 
+
   
   document.querySelector("#userTask").value = "";
 });
@@ -287,5 +275,5 @@ function DisplayCategoriesList(arr) {
 }
 
 DisplayCategoriesList(categoriesList)
-DisplayCategories(categoriesList);
+// DisplayCategories(categoriesList);
 DisplayItems(todoList);

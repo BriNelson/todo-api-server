@@ -30,18 +30,19 @@
 <body>
 
     <h1>ToDo List App</h1>
-
+    <form action="http://localhost:3000/todoData" method="POST">
     <div class="input-group mb-3" id="inputContainer">
         <input type="text" class="form-control" placeholder="Todo Item" id="userTask">
         
-        <input list="categories" name="categories" placeholder="Add Category" id="categorieInput">
-        <datalist id="categories">
+        <!-- <input list="categories" name="categories" placeholder="Add Category" id="categorieInput">
+        <datalist id="categories"> -->
     
         </datalist>
-        <button class="btn btn-light" type="button" id="addItem">
+        <button class="btn btn-light" type="submit" id="addItem">
             <i class="fas fa-plus"></i>
         </button>
     </div>
+    </form>
 
     <input class="form-control" list="categories" name="categories" placeholder="Filter" id="categorieFilter">
 

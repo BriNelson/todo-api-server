@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/DGM3760-Fall2021/m1-todo-app-501st#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node": "^17.0.1",
+    "node-fetch": "^3.0.0"
   }
 }
