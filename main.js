@@ -1,26 +1,26 @@
 
 
 
-let todoList = [
-  {
-    title: "Eat",
-    id: 1,
-    complete: false,
-    category: "Personal"
-  },
-  {
-    title: "Sleep",
-    id: 2,
-    complete: false,
-    category: "Personal"
-  },
-  {
-    title: "Code",
-    id: 3,
-    complete: false,
-    category: "Work"
-  },
-];
+// let todoList = [
+//   {
+//     title: "Eat",
+//     id: 1,
+//     complete: false,
+//     category: "Personal"
+//   },
+//   {
+//     title: "Sleep",
+//     id: 2,
+//     complete: false,
+//     category: "Personal"
+//   },
+//   {
+//     title: "Code",
+//     id: 3,
+//     complete: false,
+//     category: "Work"
+//   },
+// ];
 
 let categoriesList = [
   {
@@ -43,24 +43,27 @@ let categoriesList = [
     id: 4
   }
 ];
-let testVarible = [];
+let todoList = [];
 // Add Item to do
 
-const userObject = {};
-const addItemBtn = document.querySelector("#addItem");
+// const userObject = {};
+// const addItemBtn = document.querySelector("#addItem");
 
 
 fetch('http://localhost:3000/todoData')
     .then(res => res.json())
-    .then(json => testVarible.push(json))
+  .then(json => json.forEach(item => { todoList.push(item) }))
+     
 
-   console.log(testVarible); 
-addItemBtn.addEventListener("click", () => {
+console.log(todoList);
+   
+
+// addItemBtn.addEventListener("click", () => {
  
 
   
-  document.querySelector("#userTask").value = "";
-});
+//   document.querySelector("#userTask").value = "";
+// });
 
 // Filter ToDo's
 let filterDropdown = document.querySelector("#categorieFilter");

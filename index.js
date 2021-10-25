@@ -43,6 +43,8 @@ app.post("/todo", (req, res) => {
   console.log(todo)
 
   todoData.push(todo)
+  console.log(todoData)
+  res.send('todo is added to the database');
 
  })
 
