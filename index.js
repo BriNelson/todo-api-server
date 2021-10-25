@@ -40,11 +40,20 @@ app.get("/todoData", (req, res) => {
 
 app.post("/todo", (req, res) => {
   const todo = req.body
-  console.log(todo)
+  
+  // console.log(JSON.parse(todo));
 
-  todoData.push(todo)
+  todoData.push({
+    title: todo.title,
+    id: todoData.length + 1,
+    complete: false,
+    category: 'Work',
+    
+    
+  
+  })
   console.log(todoData)
-  res.send('todo is added to the database');
+  // res.send('todo is added to the database');
 
  })
 

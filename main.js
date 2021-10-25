@@ -46,7 +46,7 @@ let categoriesList = [
 let todoList = [];
 // Add Item to do
 
-// const userObject = {};
+const userObject = {};
 // const addItemBtn = document.querySelector("#addItem");
 
 
