@@ -22,6 +22,8 @@
 //   },
 // ];
 
+// import fetch from "node-fetch";
+
 let categoriesList = [
   {
     category: "Active",
@@ -52,18 +54,38 @@ const userObject = {};
 
 fetch('http://localhost:3000/todoData')
     .then(res => res.json())
-  .then(json => json.forEach(item => { todoList.push(item) }))
+  .then(json => DisplayItems(json))
+  
      
 
 console.log(todoList);
-   
+
 
 // addItemBtn.addEventListener("click", () => {
- 
-
+//   fetch('http://localhost:3000/todo', {
+//     method: "POST",
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       todo: 'todoList'
+//     })
+//   }).then(res => {
+//      return res.json()
+//    })
+//   .then(data => console.log(data))
   
-//   document.querySelector("#userTask").value = "";
-// });
+//    })
+   
+
+addItemBtn.addEventListener("click", () => {
+ 
+//   fetch('http://localhost:3000/todoData')
+//   .then(res => res.json())
+// .then(json => DisplayItems(json))
+  
+//   // document.querySelector("#userTask").value = "";
+});
 
 // Filter ToDo's
 let filterDropdown = document.querySelector("#categorieFilter");
