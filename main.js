@@ -49,16 +49,16 @@ let todoList = [];
 // Add Item to do
 
 const userObject = {};
-// const addItemBtn = document.querySelector("#addItem");
+const addItemBtn = document.querySelector("#addItem");
 
 
 fetch('http://localhost:3000/todoData')
-    .then(res => res.json())
-  .then(json => DisplayItems(json))
+  .then(res => res.json())
+  .then(json => DisplayItems(json));
   
      
 
-console.log(todoList);
+
 
 
 // addItemBtn.addEventListener("click", () => {
@@ -80,11 +80,11 @@ console.log(todoList);
 
 addItemBtn.addEventListener("click", () => {
  
-//   fetch('http://localhost:3000/todoData')
-//   .then(res => res.json())
-// .then(json => DisplayItems(json))
+  fetch('http://localhost:3000/todoData')
+  .then(res => res.json())
+  .then(json => DisplayItems(json));
   
-//   // document.querySelector("#userTask").value = "";
+  // document.querySelector("#userTask").value = "";
 });
 
 // Filter ToDo's
