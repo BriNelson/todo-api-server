@@ -1,7 +1,12 @@
 
+
+///////THIS IS THE SERVER
+
 import express from 'express';
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import todoData from "./models/todoModel"
+const
 // const express = require('express')
 // const bodyParser = require('body-parser');
 
@@ -16,11 +21,11 @@ mongoose.connect('mongodb+srv://3727137271:3727137271@cluster0.olv4a.mongodb.net
 })
 .catch(console.error)
 
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
-// // app.use(express.static('C:/Users/ladof/Desktop/m1-todo-app-501st'));
+app.use(express.static('C:/Users/ladof/Desktop/m1-todo-app-501st'));
 
 // app.get("/todoData", (req, res) => {
 //   res.json(todoData)
@@ -29,21 +34,21 @@ mongoose.connect('mongodb+srv://3727137271:3727137271@cluster0.olv4a.mongodb.net
 // })
   
 
-// app.post("/todo", (req, res) => {
-//   const todo = req.body
+app.post("/todo", (req, res) => {
+   const todo = req.body
   
-//   // console.log(JSON.parse(todo));
+  // console.log(JSON.parse(todo));
 
-//   todoData.push({
-//     title: todo.title,
-//     id: todoData.length + 1,
-//     complete: false,
-//     category: 'Work',
-//     })
-//   console.log(todoData)
-//   // res.send('todo is added to the database');
+  todoData.push({
+    title: todo.title,
+    id: todoData.length + 1,
+    complete: false,
+    category: 'Work',
+    })
+  console.log(todoData)
+  // res.send('todo is added to the database');
 
-//  })
+ })
 
 
 
