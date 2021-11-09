@@ -5,7 +5,11 @@
 import express from 'express';
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
-import todoData from "./models/todoModel"
+import todoData from "./models/todoModel.js"
+import dotenv from 'dotenv'
+
+dotenv.config()
+console.log(`${process.env.PORT}`)
 
 // const express = require('express')
 // const bodyParser = require('body-parser');
@@ -14,7 +18,7 @@ const app = express();
 const port = 3000;
 
 mongoose.connect('mongodb+srv://3727137271:3727137271@cluster0.olv4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-  useMongoClient = true
+  // useMongoClient = true
 })
   .then(() => {
   console.log('Connected Successfully')
