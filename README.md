@@ -1,7 +1,9 @@
 # todo-api-server
 
-npm install node
+npm install node 
+<br>
 npm install express
+<br>
 npm install node-fetch --- didn't really help me 
 
 serving from static didn't really work, served from root folder worked (line 32 of index.js)
