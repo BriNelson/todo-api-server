@@ -6,7 +6,7 @@ import express from 'express';
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import todoData from "./models/todoModel"
-const
+
 // const express = require('express')
 // const bodyParser = require('body-parser');
 
@@ -14,7 +14,7 @@ const app = express();
 const port = 3000;
 
 mongoose.connect('mongodb+srv://3727137271:3727137271@cluster0.olv4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-  useMongClient = true
+  useMongoClient = true
 })
   .then(() => {
   console.log('Connected Successfully')
@@ -25,7 +25,7 @@ mongoose.connect('mongodb+srv://3727137271:3727137271@cluster0.olv4a.mongodb.net
 app.use(bodyParser.json());
 
 
-app.use(express.static('C:/Users/ladof/Desktop/m1-todo-app-501st'));
+app.use(express.static('C:/Users/ladof/Desktop/m1-todo-app-501st')); ////enviorment variable
 
 // app.get("/todoData", (req, res) => {
 //   res.json(todoData)

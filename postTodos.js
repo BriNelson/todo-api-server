@@ -14,7 +14,7 @@ app.post("/todo", (req, res) => {
         category: 'Work',
 
     })
-    todo.save().then((result) => {console.log(result)});
+    todoModel.save().then((result) => {console.log(result)});
    
  
 //    todoData.push({
