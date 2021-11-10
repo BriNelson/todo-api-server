@@ -5,7 +5,7 @@
 import express from 'express';
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
-import todoData from "./models/todoModel.js"
+// import TodoData from "./models/todoModel.js"
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -17,8 +17,10 @@ console.log(`${process.env.PORT}`)
 const app = express();
 const port = 3000;
 
-mongoose.connect('mongodb+srv://3727137271:3727137271@cluster0.olv4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-  // useMongoClient = true
+mongoose.connect('mongodb+srv://3727137271:admin@cluster0.olv4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+  //  useMongoClient = true
 })
   .then(() => {
   console.log('Connected Successfully')
@@ -29,13 +31,13 @@ mongoose.connect('mongodb+srv://3727137271:3727137271@cluster0.olv4a.mongodb.net
 app.use(bodyParser.json());
 
 
-app.use(express.static('C:/Users/ladof/Desktop/m1-todo-app-501st')); ////enviorment variable
+app.use(express.static('C:/Users/ladof/Desktop/todo-api-server')); ////enviorment variable needs to go here
 
-// app.get("/todoData", (req, res) => {
-//   res.json(todoData)
-//     // res.send(req.params)
+app.get("/todoData", (req, res) => {
+  res.json(todoData)
+res.send(req.params)
   
-// })
+})
   
 
 app.post("/todo", (req, res) => {
@@ -57,4 +59,4 @@ app.post("/todo", (req, res) => {
 
 
 
-// app.listen(port, () => console.log(port))
+ app.listen(port, () => console.log(port))

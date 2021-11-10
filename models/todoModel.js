@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-
-const todoSchema = mongoose.Schema({
+const { Schema } = mongoose
+const todoSchema = new Schema({
     title: String,
     complete: Boolean,
     category: String,
@@ -8,4 +8,4 @@ const todoSchema = mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Todo', todoSchema)
+module.exports = mongoose.model('TodoData', todoSchema)
