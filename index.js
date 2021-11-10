@@ -9,7 +9,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 
-import port from './config.js'
+import { port } from './config.js'
 console.log(`Your port is ${port}`);
 
 // dotenv.config()
