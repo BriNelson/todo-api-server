@@ -5,17 +5,21 @@
 import express from 'express';
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
-// import TodoData from "./models/todoModel.js"
+// import TodoData from "./models/todoModel.js"npm 
 import dotenv from 'dotenv'
 
-dotenv.config()
-console.log(`${process.env.PORT}`)
+
+import port from './config.js'
+console.log(`Your port is ${port}`);
+
+// dotenv.config()
+// console.log(`${process.env.PORT}`)
 
 // const express = require('express')
 // const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+// const port = 3000;
 
 mongoose.connect('mongodb+srv://3727137271:admin@cluster0.olv4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
