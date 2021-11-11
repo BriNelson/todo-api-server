@@ -4,7 +4,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
-import TodoData from "./models/todoModel.js"
+import todoSchema from "./models/todoModel.js"
 import dotenv from 'dotenv'
 
 
@@ -19,6 +19,7 @@ console.log(`Your port is ${port}`);
 const app = express()
 // const port = 3000;
 
+//mongo connection
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -32,24 +33,28 @@ mongoose.connect(mongoUri, {
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use(express.static(staticServeFile)) /// /enviorment variable needs to go here
+// static eviorment file name goes here -- only works with full file path
+app.use(express.static(staticServeFile)) 
 
+
+//get all todos
 app.get('/todoData', (req, res) => {
   // res.json(todoData)
   res.send(req.params)
 })
 
+
+//send a todo
 app.post("/todo", (req, res) => {
-  const todo = req.body
-  const todo = new todoModel({
+   const todo = new todoSchema({
      
-      title: todo.title,
+      title: req.body.title,
      
       complete: false,
       category: 'Work',
 
   })
-  todoModel.save().then((result) => {console.log(result)});
+  todo.save().then((result) => {console.log(result)});
  
 
 //    todoData.push({
