@@ -1,5 +1,4 @@
 
-
 import dotenv from 'dotenv';
 dotenv.config();
 let mongoUri = process.env.MONGO_URI
