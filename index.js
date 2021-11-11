@@ -9,11 +9,10 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 
-import { port } from './config.js'
+import { port, mongoUri } from './config.js'
 console.log(`Your port is ${port}`);
 
-// dotenv.config()
-// console.log(`${process.env.PORT}`)
+
 
 // const express = require('express')
 // const bodyParser = require('body-parser');
@@ -21,10 +20,10 @@ console.log(`Your port is ${port}`);
 const app = express();
 // const port = 3000;
 
-mongoose.connect('mongodb+srv://3727137271:admin@cluster0.olv4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-  //  useMongoClient = true
+  useUnifiedTopology: true,
+  //  useMongoClient: true
 })
   .then(() => {
   console.log('Connected Successfully')

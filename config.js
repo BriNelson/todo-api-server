@@ -2,9 +2,10 @@
 
 import dotenv from 'dotenv';
 dotenv.config();
-module.exports = {
-  mongoUri: process.env.MONGO_URI,
-  port: process.env.PORT,
-};
+let mongoUri = process.env.MONGO_URI
+let port = process.env.PORT
+export {
+  mongoUri, port
+} ;
 
 
