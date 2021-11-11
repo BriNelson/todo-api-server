@@ -4,11 +4,11 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
-// import TodoData from "./models/todoModel.js"npm
+import TodoData from "./models/todoModel.js"
 import dotenv from 'dotenv'
 
 
-import { port, mongoUri } from './config.js'
+import { port, mongoUri, staticServeFile } from './config.js'
 console.log(`Your port is ${port}`);
 
 
@@ -32,26 +32,35 @@ mongoose.connect(mongoUri, {
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use(express.static('C:/Users/ladof/Desktop/3760/todo-api-server')) /// /enviorment variable needs to go here
+app.use(express.static(staticServeFile)) /// /enviorment variable needs to go here
 
 app.get('/todoData', (req, res) => {
   // res.json(todoData)
   res.send(req.params)
 })
 
-app.post('/todo', (req, res) => {
+app.post("/todo", (req, res) => {
   const todo = req.body
+  const todo = new todoModel({
+     
+      title: todo.title,
+     
+      complete: false,
+      category: 'Work',
 
-  // console.log(JSON.parse(todo));
-
-  todoData.push({
-    title: todo.title,
-    id: todoData.length + 1,
-    complete: false,
-    category: 'Work'
   })
-  console.log(todoData)
-  // res.send('todo is added to the database');
+  todoModel.save().then((result) => {console.log(result)});
+ 
+
+//    todoData.push({
+//      title: todo.title,
+//      id: todoData.length + 1,
+//      complete: false,
+//      category: 'Work',
+//      })
+//    console.log(todoData)
+ // res.send('todo is added to the database');
+
 })
 
 app.listen(port, () => console.log(port))

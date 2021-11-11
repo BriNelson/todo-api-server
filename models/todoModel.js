@@ -7,4 +7,4 @@ const todoSchema = new Schema({
 
 })
 
-export { todoSchema }
+export default { todoSchema }
