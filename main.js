@@ -53,21 +53,21 @@ fetch('http://localhost:3000/todoData')
   .then(res => res.json())
   .then(json => DisplayItems(json))
 
-// addItemBtn.addEventListener("click", () => {
-//   fetch('http://localhost:3000/todo', {
-//     method: "POST",
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       todo: 'todoList'
-//     })
-//   }).then(res => {
-//      return res.json()
-//    })
-//   .then(data => console.log(data))
+addItemBtn.addEventListener("click", () => {
+  fetch('http://localhost:3000/todo', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      todo: 'todoList'
+    })
+  }).then(res => {
+     return res.json()
+   })
+  .then(data => console.log(data))
 
-//    })
+   })
 
 addItemBtn.addEventListener('click', () => {
   fetch('http://localhost:3000/todoData')

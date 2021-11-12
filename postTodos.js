@@ -5,16 +5,15 @@ import todoModel from './models/todoModel';
 const app = express();
 
 app.post("/todo", (req, res) => {
-    const todo = req.body
+    // const todo = req.body
     const todo = new todoModel({
        
         title: todo.title,
-       
         complete: false,
         category: 'Work',
 
     })
-    todoModel.save().then((result) => {console.log(result)});
+    todo.save().then((result) => {console.log(result)});
    
  
 //    todoData.push({

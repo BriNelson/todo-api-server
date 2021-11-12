@@ -1,5 +1,8 @@
-import mongoose from 'mongoose'
-const { Schema } = mongoose
+import pkg from 'mongoose';
+const { model, Schema } = pkg;
+
+
+
 const todoSchema = new Schema({
     title: String,
     complete: Boolean,
@@ -8,4 +11,5 @@ const todoSchema = new Schema({
 
 })
 
-module.exports = mongoose.model('TodoData', todoSchema)
+
+export default model("todoSchema", todoSchema);

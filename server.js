@@ -5,7 +5,7 @@
 import express from 'express';
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
-// import TodoData from "./models/todoModel.js"npm 
+import todoSchema from "./models/todoModel.js"
 import dotenv from 'dotenv'
 
 
@@ -23,7 +23,8 @@ const app = express();
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  //  useMongoClient: true
+  
+    
 })
   .then(() => {
   console.log('Connected Successfully')
@@ -43,21 +44,39 @@ res.send(req.params)
 })
   
 
-app.post("/todo", (req, res) => {
-   const todo = req.body
-  
-  // console.log(JSON.parse(todo));
 
-  todoData.push({
-    title: todo.title,
-    id: todoData.length + 1,
+app.post("/todo", (req, res) => {
+  // const todo = req.body
+  const todo = new todoSchema({
+     
+    title: req.body.title,
     complete: false,
     category: 'Work',
-    })
-  console.log(todoData)
-  // res.send('todo is added to the database');
 
- })
+  })
+  todo.save().then((result) => { console.log(result) });
+})
+
+
+
+
+
+
+// app.post("/todo", (req, res) => {
+//    const todo = req.body
+  
+//   // console.log(JSON.parse(todo));
+
+//   todoData.push({
+//     title: todo.title,
+//     id: todoData.length + 1,
+//     complete: false,
+//     category: 'Work',
+//     })
+//   console.log(todoData)
+//   // res.send('todo is added to the database');
+
+//  })
 
 
 
